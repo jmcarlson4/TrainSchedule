@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" type="text/css" href="reset.css">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href="javascript.js">-->
+
+
+    <meta charset="UTF-8">
+    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <title>Train Schedule</title>
+
+</head>
+
+<body>
+
+
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4" style="text-align: center">Train Schedule </h1>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            Current Train Schedule
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Train Name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Frequency (min)</th>
+                <th scope="col">Next Arrival</th>
+                <th scope="col">Minutes Away</th>
+            </tr>
+        </thead>
+        <tbody id="table">
+
+        </tbody>
+    </table>
+    <form>
+        <div class="form-group">
+            <label for="trainName">Train Name</label>
+            <input type="text" class="form-control" id="Train">
+        </div>
+        <div class="form-group">
+            <label for="Destination">Destination</label>
+            <input type="text" class="form-control" id="destination">
+        </div>
+        <div class="form-group">
+            <label for="trainTime">First Train Time (military time)</label>
+            <input type="text" class="form-control" id="time">
+        </div>
+        <div class="form-group">
+            <label for="Frequency">Frequency</label>
+            <input type="text" class="form-control" id="Frequency">
+        </div>
+
+        <button type="submit" class="button">Submit</button>
+    </form>
+    <script src="javascript.js"></script>
+</body>
+
+</html>
