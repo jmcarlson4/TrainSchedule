@@ -21,15 +21,17 @@
 
     var TrainName = $("#Train").val().trim();
   var Destination = $("#destination").val().trim();
-  var FirstTrain = moment($("#time").val().trim(), "HH:mm:ss").format("X");
-  var Frequency = $("#Frequency").val().trim();
+  
+  var FirstTrain = moment($("#time").val().trim(),"HH:mm:ss").format("X");
+  console.log(FirstTrain);
+    var Frequency = $("#Frequency").val().trim();
 
 var NewTrain = {
     TrainName : TrainName,
     Destination : Destination,
     FirstTrain: FirstTrain,
     Frequency : Frequency
-}; console.log(NewTrain);
+}; //console.log(NewTrain);
   
 database.ref().push(NewTrain);
 
@@ -40,22 +42,31 @@ $("#Train").val("");
 
   });
 
- // database.ref().on("child_added", function(addTrain) {
-   // var TrainName =addTrain.val().name;
-  //  var destination = addTrain.val().destination;
-    //var FirstTrain = addTrain.val().time;
-   // var Frequency = addTrain.val().frequency;
+  database.ref().on("child_added", function (addTrain){
+    var TableDiv = $("<tr>");
 
-    //do calculation for next arrival time
-    //do calculation for minutes till next train arrives
-
-//     var newRow = $("<tr>").append(
-//         $("<td>").text(TrainName),
-//         $("<td>").text(Destination),
-//         $("<td>").text(Frequency),
-//     //    $("<td>").text(add var from above calculation section),
-//       //  $("<td>").text(add var from above calculation section),
-//               );
-//               $("#table").append(newRow);
+  
+    var Train = $("<td>" + addTrain.val().TrainName + "</td>");
+   var location = $("<td>" + addTrain.val().Destination + "</td>");
+    //var Time = $("<td>" + addTrain.val().FirstTrain + "</td>");
+    var howOften = $("<td>" + addTrain.val().Frequency + "</td>");
     
-//   });
+
+    TableDiv.append(Train).append(location).append(howOften)//.append(Time)//.append(minutesAway);
+    $("#table").append(TableDiv);
+  });
+
+
+ 
+
+  //   //do calculation for next arrival time
+  //   //do calculation for minutes till next train arrives
+
+    
+
+  //    // $("<td>").text(add var from above calculation section),
+  //      //  $("<td>").text(add var from above calculation section),
+  //             );
+              
+    
+  //  });
