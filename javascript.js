@@ -1,7 +1,7 @@
 
-
-
-  
+var FirstTrain
+var nextTrain
+var minutesUnitlTrain  
 
   var config = {
     apiKey: "AIzaSyAkrnkgBC47E4rC04jHzHL1c6fN4dAHRqI",
@@ -22,8 +22,8 @@
     var TrainName = $("#Train").val().trim();
   var Destination = $("#destination").val().trim();
   
-  var FirstTrain = moment($("#time").val().trim(),"HH:mm:ss").format("X");
-  console.log(FirstTrain);
+   FirstTrain = moment($("#time").val().trim()).format("HH:mm:ss");
+  //console.log(FirstTrain);
     var Frequency = $("#Frequency").val().trim();
 
 var NewTrain = {
@@ -48,13 +48,36 @@ $("#Train").val("");
   
     var Train = $("<td>" + addTrain.val().TrainName + "</td>");
    var location = $("<td>" + addTrain.val().Destination + "</td>");
-    //var Time = $("<td>" + addTrain.val().FirstTrain + "</td>");
+    minutesUnitlTrain = $("<td>" + addTrain.val().minutesUnitlTrain + "</td>");
     var howOften = $("<td>" + addTrain.val().Frequency + "</td>");
-    
+    nextTrain = $("<td>" + addTrain.val().nextTrain + "</td>");
 
-    TableDiv.append(Train).append(location).append(howOften)//.append(Time)//.append(minutesAway);
+    TableDiv.append(Train).append(location).append(howOften).append(nextTrain).append(minutesUnitlTrain);
     $("#table").append(TableDiv);
   });
+
+  var trainFrequency = 5;
+
+  var firstTime = "02:30";
+
+  var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+console.log(firstTimeConverted);
+
+var currentTime = moment();
+console.log("CURRENT TIME : " + moment(currentTime).format("HH:mm"));
+
+var differenceTime = moment().diff(moment(firstTimeConverted), "minutes");
+console.log("DIFFERENCE IN TIME " + differenceTime);
+
+var remainder = differenceTime % trainFrequency;
+console.log(remainder);
+
+minutesUnitlTrain = trainFrequency - remainder;
+console.log(minutesUnitlTrain);
+
+ nextTrain = moment().add(minutesUnitlTrain, "minutes");
+console.log("ARRIVAL TIME " + moment(nextTrain).format("hh:mm"));
+
 
 
  
